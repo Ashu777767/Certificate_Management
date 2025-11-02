@@ -103,7 +103,7 @@ export default function SkillVisualizer() {
       {selectedChart === "skills" && (
         <div className="bg-white/10 backdrop-blur-md border border-white/30 text-white shadow-xl rounded-2xl p-6">
           <h2 className="text-3xl font-bold text-center text-pink-400 mb-6">
-            🧠 Skill Distribution
+             Skill Distribution
           </h2>
           {skillData.length === 0 ? (
             <p className="text-center text-gray-200">No skills found.</p>

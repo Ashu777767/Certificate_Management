@@ -14,6 +14,9 @@ import AuthPage from "./components/AuthPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ResetPassword from "./components/ResetPassword";
 
+import * as THREE from "three";
+import HALO from "vanta/dist/vanta.halo.min"; // 👈 Import the HALO effect
+
 export default function App() {
   const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
@@ -35,18 +38,19 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!vantaEffect.current && window.VANTA && window.VANTA.NET) {
-      vantaEffect.current = window.VANTA.NET({
+    if (!vantaEffect.current) {
+      vantaEffect.current = HALO({
         el: vantaRef.current,
+        THREE, // required for module version
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
         minHeight: 200.0,
         minWidth: 200.0,
-        scale: 1.0,
-        scaleMobile: 1.0,
-        color: 0xff3b3b,
+        baseColor: 0x111111,
         backgroundColor: 0x000000,
+        amplitudeFactor: 1.2,
+        size: 1.1,
       });
     }
 
@@ -73,7 +77,7 @@ export default function App() {
         {/* 🔝 Navigation Bar */}
         <nav className="sticky top-0 z-50 bg-black/60 text-white p-4 flex justify-between items-center shadow-md backdrop-blur-md">
           <Link to={user ? "/" : "/auth"} className="text-lg font-bold">
-            🎓 CertiStore Pro
+            🎓 Certi Pro
           </Link>
 
           {/* Desktop Nav */}
@@ -118,13 +122,25 @@ export default function App() {
         {/* Mobile Menu Dropdown */}
         {showMenu && (
           <div className="sm:hidden absolute top-16 right-4 bg-black/80 rounded-lg shadow-md px-4 py-4 space-y-3 z-50">
-            <Link to="/" onClick={() => setShowMenu(false)} className="block hover:underline">
+            <Link
+              to="/"
+              onClick={() => setShowMenu(false)}
+              className="block hover:underline"
+            >
               Upload
             </Link>
-            <Link to="/gallery" onClick={() => setShowMenu(false)} className="block hover:underline">
+            <Link
+              to="/gallery"
+              onClick={() => setShowMenu(false)}
+              className="block hover:underline"
+            >
               Gallery
             </Link>
-            <Link to="/skills" onClick={() => setShowMenu(false)} className="block hover:underline">
+            <Link
+              to="/skills"
+              onClick={() => setShowMenu(false)}
+              className="block hover:underline"
+            >
               Skills
             </Link>
             {user ? (
@@ -185,6 +201,3 @@ export default function App() {
     </Router>
   );
 }
-
-
-

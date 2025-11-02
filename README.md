@@ -2,7 +2,7 @@
 ````markdown
 🎓 CertiStore Pro – Certificate Management Platform
 
-Author: Aman Kumar Jha  
+Author: Ashutosh Kumar Jha  
 Year: 2025  
 Repository: (https://github.com/amankumarjha71391/certistore-pro)
 

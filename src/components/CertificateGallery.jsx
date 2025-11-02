@@ -108,10 +108,14 @@ export default function CertificateGallery() {
     fetchCertificates();
   };
 
-  const getPublicUrl = (filePath) => {
-    const parts = filePath.split("/certificates/");
-    return `https://gclzcyunkashfnwgzxwf.supabase.co/storage/v1/object/public/certificates/${parts[1]}`;
-  };
+  // const getPublicUrl = (filePath) => {
+  //   const parts = filePath.split("/certificates/");
+  //   return `https://gclzcyunkashfnwgzxwf.supabase.co/storage/v1/object/public/certificates/${parts[1]}`;
+  // };
+const getPublicUrl = (filePath) => {
+  // file_url is already a full public link, so just return it directly
+  return filePath;
+};
 
   return (
    <div
