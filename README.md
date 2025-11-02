@@ -37,7 +37,7 @@ Frontend:
 - React (Vite)
 - Tailwind CSS
 - Recharts
-- Vanta.js (NET animation)
+- Vanta.js (HALO animation)
 
 Backend:
 - Supabase (Auth, Database, Storage)
