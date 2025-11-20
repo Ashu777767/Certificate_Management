@@ -1,1 +1,16 @@
 @import "tailwindcss";
+/* html, body, #root {
+  height: 100%;
+  background: black;
+}  */
+
+
+#vanta-bg {
+  min-height: 100%;
+  height: auto !important;
+}
+html, body {
+  min-height: 100%;
+  height: auto !important;
+  background: transparent !important;
+}
