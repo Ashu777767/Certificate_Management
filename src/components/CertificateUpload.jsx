@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 import { v4 as uuidv4 } from "uuid";
-import { AnimatedBackground } from "animated-backgrounds";
 
 export default function CertificateUpload() {
   const [title, setTitle] = useState("");
@@ -28,10 +27,9 @@ export default function CertificateUpload() {
     const user = session.user;
     const fileExt = file.name.split(".").pop();
     const fileName = `${uuidv4()}.${fileExt}`;
-    const filePath = `${user.id}/${fileName}`; // Storing under user ID folder
+    const filePath = `${user.id}/${fileName}`;
 
-    // Upload file to Supabase Storage
-    const { data: fileData, error: uploadError } = await supabase.storage
+    const { error: uploadError } = await supabase.storage
       .from("certificates")
       .upload(filePath, file);
 
@@ -42,20 +40,12 @@ export default function CertificateUpload() {
       return;
     }
 
-    // Get public URL of uploaded file
     const { data: publicUrlData } = supabase.storage
       .from("certificates")
       .getPublicUrl(filePath);
 
     const publicUrl = publicUrlData?.publicUrl;
 
-    if (!publicUrl) {
-      alert("Failed to get public URL.");
-      setUploading(false);
-      return;
-    }
-
-    // Insert metadata into "certificates" table
     const { error: insertError } = await supabase.from("certificates").insert({
       user_id: user.id,
       title,
@@ -79,14 +69,8 @@ export default function CertificateUpload() {
   };
 
   return (
-    <div className="min-h-screen w-full relative flex items-center justify-center overflow-hidden">
-      <AnimatedBackground
-        animationName="floatingBubbles"
-        theme="presentation"
-        interactive={false}
-        adaptivePerformance={true}
-        className="absolute inset-0 -z-10"
-      />
+    <div className="min-h-screen w-full relative flex items-center justify-center overflow-hidden bg-transparent">
+      {/* No AnimatedBackground — Halo from App.jsx shows behind */}
 
       <div className="relative z-10 max-w-xl w-full p-8 bg-white/20 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30">
         <h2 className="text-3xl font-extrabold text-white text-center mb-6">

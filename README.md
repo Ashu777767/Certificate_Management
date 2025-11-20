@@ -4,7 +4,7 @@
 
 Author: Ashutosh Kumar Jha  
 Year: 2025  
-Repository: (https://github.com/amankumarjha71391/certistore-pro)
+Repository: (https://github.com/Ashu777767/Certificate_Management)
 
 📌 Overview
 
@@ -37,7 +37,7 @@ Frontend:
 - React (Vite)
 - Tailwind CSS
 - Recharts
-- Vanta.js (NET animation)
+- Vanta.js (Wave animation)
 
 Backend:
 - Supabase (Auth, Database, Storage)
@@ -50,7 +50,7 @@ Prerequisites
 
 Installation
 
-git clone https://github.com/amankumarjha71391/certistore-pro
+git clone https://github.com/Ashu777767/Certificate_Management
 cd certistore-pro
 npm install
 
